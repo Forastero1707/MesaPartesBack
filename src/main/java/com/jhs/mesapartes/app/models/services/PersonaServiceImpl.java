@@ -27,4 +27,23 @@ public class PersonaServiceImpl implements IPersonaService {
 		// TODO Auto-generated method stub
 		return personaDao.findAll(pageable);
 	}
+	@Override
+	@Transactional(readOnly = true)
+	public Persona findByDni(String dni) {
+		// TODO Auto-generated method stub
+		return personaDao.findById(dni).orElse(null);
+	}
+	@Override
+	@Transactional
+	public Persona save(Persona persona) {
+		// TODO Auto-generated method stub
+		return personaDao.save(persona);
+	}
+	@Override
+	@Transactional
+	public void delete(String dni) {
+		// TODO Auto-generated method stub
+		personaDao.deleteById(dni);
+		
+	}
 }
